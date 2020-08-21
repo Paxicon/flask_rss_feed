@@ -1,6 +1,18 @@
 {% extends 'base.html' %} {% block content %}
-<h1>SVT nyheter</h1>
-{% for x in rss_data %} 
-{{rss_data.entries.title}} 
-{% endfor %} {%
-endblock %}
+<div class="row">
+<div class="col s12">
+<h2> Svenska nyheter:</h2>
+</div>
+</div>
+
+<div class="row">
+    <div class="col s6 news-box">
+    <h4>SVT nyheter</h4>
+    {% for news in news %} 
+    <a href="{{news.link}} target="_blank">{{news.title}}</a><br>
+    <p>{{news.description}}</p><br>
+    {% endfor %} 
+    {% endblock %}
+    </div>
+
+</div>

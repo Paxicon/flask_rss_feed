@@ -14,7 +14,7 @@ print(rss_data.entries[0].title)
 @app.route("/")
 @app.route("/read_feed")
 def read_feed():
-    return render_template("rss_feed.html")
+    return render_template("rss_feed.html", news=rss_data.entries)
 
 
 if __name__ == '__main__':
