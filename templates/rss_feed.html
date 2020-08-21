@@ -1,0 +1,6 @@
+{% extends 'base.html' %} {% block content %}
+<h1>SVT nyheter</h1>
+{% for x in rss_data %} 
+{{rss_data.entries.title}} 
+{% endfor %} {%
+endblock %}
