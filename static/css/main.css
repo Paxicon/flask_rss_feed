@@ -1,4 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
+body {
+  font-size: 14px;
+}
+.headline {
+  font-family: "Special Elite", cursive;
+}
 .news-box {
-  background-color: blanchedalmond;
   margin: 1%;
+  display: none;
+}
+.hat-logo {
+  padding-left: 50px;
+  max-height: 50px;
+  width: auto;
+}
+.navbar-collection {
+  background-color: brown;
+  display: inline;
+}
+.headline-header {
+  display: inline;
+}
+.feed_refresh {
+  padding-right: 50px;
 }

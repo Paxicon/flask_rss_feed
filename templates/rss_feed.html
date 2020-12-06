@@ -1,18 +1,57 @@
 {% extends 'base.html' %} {% block content %}
-<div class="row">
-<div class="col s12">
-<h2> Svenska nyheter:</h2>
-</div>
-</div>
 
-<div class="row">
-    <div class="col s6 news-box">
-    <h4>SVT nyheter</h4>
-    {% for news in news %} 
-    <a href="{{news.link}} target="_blank">{{news.title}}</a><br>
-    <p>{{news.description}}</p><br>
-    {% endfor %} 
-    {% endblock %}
+  <nav class="nav-extended">
+  <div class="nav-wrapper">
+    <img src="../static/images/press-hat.png" class="hat-logo left" /> 
+    <a href="rss_feed" class="brand-logo center headline">Nyheter: </a><a id="feed_refresh" href="read_feed" class="right"><i class="material-icons">autorenew</i></a><br>
+    <p class="center">Välkommen till NyhetsMurveln. Här samlas alla artiklar för dagen från några av Sveriges största nyhetssidor. Sidan uppdateras automatiskt vid varje besök, men du kan manuellt uppdatera den med cirkel-knappen längst till höger. Jag uppdaterar ingenting manuellt, all information tas från nyhetssidornas egna publicering på nätet och sidan är enbart för att samla länkar på en plats.</p>
+    <div class="nav-content">
+    <ul class="tabs tabs-transparent">    
+      
+    {% for item in news %}
+
+    <li class="tab">
+    <a
+      class="navbar-item headline"
+      href="#{{loop.index}}"
+      >{{item.feed.link}}</a
+    >
+  </li>
+
+    {% endfor %}
+  
+  </ul>
+  </div>
+  </div>   
+    </nav>
+  
+
+    {% for item in news %}
+
+    <div class="news-box row" id="{{loop.index}}">
+      <div class="col s12">
+        {% for entry in item.entries %}
+        <ul class="collapsible">
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons">expand_more</i>{{entry.title}}
+            </div>
+            <div class="collapsible-body white">
+              <span
+                ><a href="{{entry.link}}" target="_blank">{{entry.title}}</a
+                ><br />
+                <p>{{entry.summary|striptags}}</p>
+                <br />
+                <p>Publicerades: {{entry.published}}</p></span
+              >
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
 
-</div>
+    {% endfor %}
+
+  </div>
+{% endblock %}}
